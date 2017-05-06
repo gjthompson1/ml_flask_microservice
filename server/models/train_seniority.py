@@ -25,7 +25,7 @@ token_to_categories = {v: k for k, v in categories_to_token.iteritems()}
 
 df = pd.read_csv('../data/titles.csv')
 df['title'] = df['title'].apply(lambda x : unicode(x,errors='ignore'))
-df['target'] = df['seniority_new'].apply(lambda x: categories_to_token[str(x)])
+df['target'] = df['seniority'].apply(lambda x: categories_to_token[str(x)])
 
 # clf = Pipeline([('vect', CountVectorizer(ngram_range=(1, 3))),('clf', SGDClassifier(loss='hinge', penalty='l2',alpha=1e-3, n_iter=5, random_state=42))])
 clf = Pipeline([('vect', CountVectorizer()),('clf', MultinomialNB())])
